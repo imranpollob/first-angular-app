@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HousingLocation } from '../housinglocation';
 
 @Component({
@@ -6,24 +6,15 @@ import { HousingLocation } from '../housinglocation';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      housing-location works!
-    </p>
+    <section class="listing">
+      <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
+      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+      <p class="listing-location">{{ housingLocation.city}}, {{housingLocation.state }}</p>
+    </section>
   `,
   styleUrl: './housing-location.component.css'
 })
 
-export class HomeComponent {
-  readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
-
-  housingLocation: HousingLocation = {
-    id: 9999,
-    name: 'Test Home',
-    city: 'Test city',
-    state: 'ST',
-    photo: `${this.baseUrl}/example-house.jpg`,
-    availableUnits: 99,
-    wifi: true,
-    laundry: false,
-  };
+export class HousingLocationComponent {
+  @Input() housingLocation!: HousingLocation
 }
