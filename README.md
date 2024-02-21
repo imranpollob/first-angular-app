@@ -13,3 +13,9 @@ ng generate service housing --skip-tests
 ng generate component details --inline-template --skip-tests
 ```
 
+JSON Server
+```bash
+npm install -g json-server
+json-server --watch db.json
+```
+
